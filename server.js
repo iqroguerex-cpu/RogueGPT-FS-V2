@@ -22,9 +22,9 @@ app.use(
 );
 
 const availableModels = [
+    { id: "openrouter/sonoma-dusk-alpha", name: "Sonoma Dusk Alpha" },
     { id: "nvidia/nemotron-nano-9b-v2:free", name: "NVIDIA: Nemotron Nano 9B V2" },
     { id: "openrouter/sonoma-sky-alpha", name: "Sonoma Sky (Alpha)" },
-    { id: "openrouter/sonoma-dusk-alpha", name: "Sonoma Dusk Alpha" },
     { id: "deepseek/deepseek-chat-v3.1:free", name: "DeepSeek: DeepSeek V3.1" },
     { id: "tngtech/deepseek-r1t2-chimera:free", name: "TNG: DeepSeek R1T2 Chimera" },
     { id: "z-ai/glm-4.5-air:free", name: "Z.AI: GLM 4.5 Air" },
@@ -182,3 +182,4 @@ app.post("/clear", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
