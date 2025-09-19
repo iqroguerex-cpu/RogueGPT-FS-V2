@@ -173,7 +173,6 @@ main#chat-box::-webkit-scrollbar-thumb { background: var(--bg-interactive); bord
 .message.ai .timestamp { align-self: flex-start; }
 .error { color: var(--error-color); font-weight: 500; }
 
-/* UPDATED: Added styles for the bouncing dots animation */
 .typing-dots { display: inline-flex; gap: 6px; align-items: center; padding: 12px; }
 .typing-dots span {
   width: 8px; height: 8px; background: var(--text-secondary);
@@ -263,13 +262,45 @@ footer {
 }
 
 /* ============================================= */
-/* 7. RESPONSIVENESS                             */
+/* 7. RESPONSIVENESS (FOR MOBILE)                */
 /* ============================================= */
 @media (max-width: 768px) {
-  .message { max-width: 95%; }
-  header { padding: 10px 15px; flex-wrap: wrap; gap: 1rem; }
-  header h1 { margin-right: 0; width: 100%; text-align: center; }
-  .model-selector { flex-grow: 1; }
-  main#chat-box { padding: calc(var(--spacing-unit) * 2); }
-  footer { padding: 10px; }
+  /* Make the main app container use the full screen width */
+  .chat-app {
+    max-width: 100%;
+  }
+
+  /* Adjust header layout for small screens */
+  header {
+    padding: 10px 15px;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  header h1 {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 8px; /* Add space below title */
+    order: 1; /* Make title appear first */
+  }
+  .model-selector {
+    order: 2; /* Model selector second */
+    flex-grow: 1; /* Allow selector to take available space */
+  }
+  .header-controls {
+    order: 3; /* Buttons third */
+  }
+
+  /* Make chat messages a bit wider on mobile */
+  .message {
+    max-width: 95%;
+  }
+  
+  /* Reduce padding in chat area and footer */
+  main#chat-box {
+    padding: calc(var(--spacing-unit) * 2);
+  }
+  footer {
+    padding: 10px;
+  }
 }
