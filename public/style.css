@@ -1,0 +1,275 @@
+/* ============================================= */
+/* 1. THEME VARIABLES & BASE STYLES            */
+/* ============================================= */
+:root {
+  --font-sans: "Inter", "Segoe UI", Tahoma, Verdana, sans-serif;
+  --font-mono: "Fira Code", "Courier New", monospace;
+  --spacing-unit: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
+  --transition-fast: all 0.15s ease-in-out;
+  --transition-medium: all 0.3s ease-in-out;
+  --bg-primary: #0f1114;
+  --bg-secondary: #161718;
+  --bg-interactive: #2b2d31;
+  --bg-interactive-hover: #3a3c42;
+  --text-primary: #e6e6e6;
+  --text-secondary: #9aa0a6;
+  --text-on-accent: #ffffff;
+  --border-primary: rgba(255, 255, 255, 0.05);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  --accent-primary: #10a37f;
+  --accent-primary-hover: #14c38e;
+  --error-color: #ef4444;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --bg-interactive: #d1d5db;
+  --bg-interactive-hover: #b9bec5;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border-primary: rgba(0, 0, 0, 0.08);
+  --border-secondary: rgba(0, 0, 0, 0.12);
+  --accent-primary: #059669;
+  --accent-primary-hover: #047857;
+  --error-color: #dc2626;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  transition: background var(--transition-medium), color var(--transition-medium);
+}
+
+/* ============================================= */
+/* 2. LAYOUT & CHAT APP                          */
+/* ============================================= */
+.main-content {
+  width: 100%;
+  height: 100vh;
+}
+.chat-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ============================================= */
+/* 3. HEADER & CONTROLS                          */
+/* ============================================= */
+header {
+  background: var(--bg-primary);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-primary);
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+header h1 {
+  font-size: 1.25rem;
+  margin-right: auto;
+}
+.header-controls { display: flex; gap: var(--spacing-unit); }
+.header-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: var(--spacing-unit);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: var(--transition-fast);
+}
+.header-btn:hover {
+  background: var(--bg-interactive-hover);
+  color: var(--text-primary);
+}
+.header-btn svg { display: block; width: 22px; height: 22px; }
+#clear-btn {
+  background: var(--bg-interactive);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+#theme-toggle .moon-icon { display: none; }
+#theme-toggle .sun-icon { display: block; }
+body.light-mode #theme-toggle .moon-icon { display: block; }
+body.light-mode #theme-toggle .sun-icon { display: none; }
+
+.model-selector {
+  background: var(--bg-interactive);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--border-radius-sm);
+  padding: 6px 10px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+/* ============================================= */
+/* 4. CHAT AREA & MESSAGES                       */
+/* ============================================= */
+main#chat-box {
+  flex-grow: 1;
+  padding: calc(var(--spacing-unit) * 3);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 2);
+}
+main#chat-box::-webkit-scrollbar { width: 8px; }
+main#chat-box::-webkit-scrollbar-track { background: transparent; }
+main#chat-box::-webkit-scrollbar-thumb { background: var(--bg-interactive); border-radius: 8px; }
+
+.intro { color: var(--text-secondary); text-align: center; margin: auto; }
+.message {
+  max-width: 85%;
+  line-height: 1.6;
+  word-wrap: break-word;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.message-content {
+  padding: 12px 16px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.message.user { align-self: flex-end; }
+.message.user .message-content {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-primary-hover));
+  color: var(--text-on-accent);
+  border-bottom-right-radius: var(--border-radius-sm);
+}
+.message.ai { align-self: flex-start; }
+.message.ai .message-content {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-bottom-left-radius: var(--border-radius-sm);
+}
+.timestamp {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  margin-top: 4px;
+  padding: 0 8px;
+}
+.message.user .timestamp { align-self: flex-end; }
+.message.ai .timestamp { align-self: flex-start; }
+.error { color: var(--error-color); font-weight: 500; }
+
+/* UPDATED: Added styles for the bouncing dots animation */
+.typing-dots { display: inline-flex; gap: 6px; align-items: center; padding: 12px; }
+.typing-dots span {
+  width: 8px; height: 8px; background: var(--text-secondary);
+  border-radius: 50%;
+  animation: dotPulse 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dotPulse { 50% { opacity: 1; transform: translateY(-4px); } }
+
+/* ============================================= */
+/* 5. CODE BLOCKS & COPY BUTTON                  */
+/* ============================================= */
+.message.ai pre {
+  margin: var(--spacing-unit) 0;
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+.message.ai pre code.hljs {
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: var(--border-radius-md);
+}
+.code-block-wrapper { position: relative; }
+.copy-btn {
+  position: absolute;
+  top: var(--spacing-unit);
+  right: var(--spacing-unit);
+  background: #44475a;
+  color: #f8f8f2;
+  border: none;
+  padding: 6px 10px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition: var(--transition-fast);
+  z-index: 10;
+}
+.code-block-wrapper:hover .copy-btn { opacity: 1; }
+
+/* ============================================= */
+/* 6. FOOTER & INPUT                             */
+/* ============================================= */
+footer {
+  padding: 12px 18px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-primary);
+  flex-shrink: 0;
+}
+#chat-form { display: flex; gap: var(--spacing-unit); align-items: flex-end; }
+#message-input {
+  flex-grow: 1;
+  min-height: 52px;
+  max-height: 200px;
+  padding: 14px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-primary);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  resize: none;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+}
+#message-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-primary-hover);
+}
+.control-btn {
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  border: none;
+  height: 52px;
+  width: 52px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+.control-btn:hover { background: var(--accent-primary-hover); }
+#stop-btn {
+  background: var(--bg-interactive-hover);
+  border: 1px solid var(--border-secondary);
+}
+
+/* ============================================= */
+/* 7. RESPONSIVENESS                             */
+/* ============================================= */
+@media (max-width: 768px) {
+  .message { max-width: 95%; }
+  header { padding: 10px 15px; flex-wrap: wrap; gap: 1rem; }
+  header h1 { margin-right: 0; width: 100%; text-align: center; }
+  .model-selector { flex-grow: 1; }
+  main#chat-box { padding: calc(var(--spacing-unit) * 2); }
+  footer { padding: 10px; }
+}
