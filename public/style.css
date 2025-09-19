@@ -48,7 +48,7 @@ body {
   color: var(--text-primary);
   height: 100vh;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; <-- THIS LINE WAS REMOVED TO FIX THE BUG */
   transition: background var(--transition-medium), color var(--transition-medium);
 }
 
