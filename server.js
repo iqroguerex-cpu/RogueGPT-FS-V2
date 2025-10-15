@@ -23,15 +23,15 @@ app.use(
 
 const availableModels = [
     { id: "nvidia/nemotron-nano-9b-v2:free", name: "NVIDIA: Nemotron Nano 9B V2" },
-    { id: "openrouter/sonoma-dusk-alpha", name: "Sonoma Dusk Alpha" },
-    { id: "openrouter/sonoma-sky-alpha", name: "Sonoma Sky (Alpha)" },
+    { id: "meituan/longcat-flash-chat:free", name: "Meituan: LongCat Flash Chat" },
+    { id: "alibaba/tongyi-deepresearch-30b-a3b:free", name: "Tongyi DeepResearch 30B A3B" },
     { id: "deepseek/deepseek-chat-v3.1:free", name: "DeepSeek: DeepSeek V3.1" },
     { id: "tngtech/deepseek-r1t2-chimera:free", name: "TNG: DeepSeek R1T2 Chimera" },
     { id: "z-ai/glm-4.5-air:free", name: "Z.AI: GLM 4.5 Air" },
     { id: "deepseek/deepseek-r1:free", name: "DeepSeek: R1" },
     { id: "google/gemini-2.0-flash-exp:free", name: "Google: Gemini 2.0 Flash Experimental" },
     { id: "meta-llama/llama-3.3-70b-instruct:free", name: "Meta: Llama 3.3 70B Instruct" },
-    { id: "microsoft/mai-ds-r1:free", name: "Microsoft: MAI DS R1" }
+    { id: "qwen/qwen3-coder:free", name: "Qwen: Qwen3 Coder 480B A35B" }
 ];
 const validModelIds = new Set(availableModels.map(m => m.id));
 
@@ -182,5 +182,6 @@ app.post("/clear", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
 
 
