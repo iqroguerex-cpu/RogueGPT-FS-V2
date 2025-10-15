@@ -38,15 +38,15 @@ A lightweight, full-stack AI chat application built with **Express.js**, **EJS**
 | Model ID | Name |
 |-----------|------|
 | `nvidia/nemotron-nano-9b-v2:free` | NVIDIA: Nemotron Nano 9B V2 |
-| `openrouter/sonoma-dusk-alpha` | Sonoma Dusk Alpha |
-| `openrouter/sonoma-sky-alpha` | Sonoma Sky (Alpha) |
+| `meituan/longcat-flash-chat:free` | Meituan: LongCat Flash Chat |
+| `alibaba/tongyi-deepresearch-30b-a3b:free` | Tongyi DeepResearch 30B A3B |
 | `deepseek/deepseek-chat-v3.1:free` | DeepSeek: DeepSeek V3.1 |
 | `tngtech/deepseek-r1t2-chimera:free` | TNG: DeepSeek R1T2 Chimera |
 | `z-ai/glm-4.5-air:free` | Z.AI: GLM 4.5 Air |
 | `deepseek/deepseek-r1:free` | DeepSeek: R1 |
 | `google/gemini-2.0-flash-exp:free` | Google: Gemini 2.0 Flash Experimental |
 | `meta-llama/llama-3.3-70b-instruct:free` | Meta: Llama 3.3 70B Instruct |
-| `microsoft/mai-ds-r1:free` | Microsoft: MAI DS R1 |
+| `qwen/qwen3-coder:free` | Qwen: Qwen3 Coder 480B A35B |
 
 ---
 
