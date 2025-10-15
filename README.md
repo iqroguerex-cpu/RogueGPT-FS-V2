@@ -5,7 +5,7 @@ A lightweight, full-stack AI chat application built with **Express.js**, **EJS**
 ---
 
 ## 🚀 Live Demo  **(Note: Wait about 10 Minutes for The Site To Render.)**
-**[![Live Site](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://roguegpt.onrender.com)**
+**[![Live Site](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://roguegpt-fs-v2.onrender.com)**
 
 ---
 
