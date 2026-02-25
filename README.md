@@ -60,7 +60,7 @@ A lightweight, full-stack AI chat application built with **Express.js**, **EJS**
 
 ## 👨‍💻 Author
 
-**Chinmay Chatradamath**  
+**Chinmay V Chatradamath.**  
 
 ---
 
